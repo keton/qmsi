@@ -116,7 +116,7 @@ BUILD ?= release
 CFLAGS += -ffunction-sections -fdata-sections
 LDFLAGS += -Xlinker --gc-sections
 ifeq ($(BUILD), debug)
-CFLAGS += -O0 -g -DDEBUG
+CFLAGS += -Og -g -DDEBUG
 ifeq ($(ITA_NO_ASSERT), 1)
 CFLAGS += -DITA_NO_ASSERT
 $(info Asserts will be switched off in debug mode due to code size limitation)
