@@ -89,8 +89,8 @@ OBJCOPY_0 = @echo "Objcopy $@" && $(PREFIX)-objcopy
 OBJCOPY_1 = $(PREFIX)-objcopy
 OBJCOPY = $(OBJCOPY_$(V))
 
-AR_0 = @echo "AR $@" && $(PREFIX)-ar
-AR_1 = $(PREFIX)-ar
+AR_0 = @echo "AR $@" && $(PREFIX)-gcc-ar
+AR_1 = $(PREFIX)-gcc-ar
 AR = $(AR_$(V))
 
 CC_0 = @echo "CC $@" && $(PREFIX)-gcc
@@ -122,7 +122,7 @@ CFLAGS += -DITA_NO_ASSERT
 $(info Asserts will be switched off in debug mode due to code size limitation)
 endif
 else ifeq ($(BUILD), release)
-CFLAGS += -Os -fomit-frame-pointer
+CFLAGS += -Os -fomit-frame-pointer -flto
 else
 $(error Supported BUILD values are 'release' and 'debug')
 endif
